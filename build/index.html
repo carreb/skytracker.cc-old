@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- end poppins font -->
+    <link rel="shortcut icon" href="Enchanted_Diamond.webp" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <script src="builder.js" defer></script>
+    <title>SkyTracker Builder</title>
+</head>
+<body>
+    <div class="centerbox">
+        <div class="container">
+            <h1 class=text>Build a Tracker</h1>
+            <p class="text">Select the options below to make your tracker your own.</p>
+            <input type="text" placeholder="API Key (run '/api new' on hypixel)" id="keyBox" class="textbox">
+            <input type="text" placeholder="Player Name" id="nameBox" class="textbox">
+            <input type="text" placeholder="Profile Name" id="profileBox" class="textbox">
+            <select name="selector" id="selector" class="dropdownmenu">
+                <optgroup label="Mining">
+                    <option value="Mithril">Mithril</option>
+                </optgroup>
+                <optgroup label="Foraging">
+                    <option value="Dark Oak">Dark Oak</option>
+                </optgroup>
+            </select>
+            <br><br>
+            <button id="goButton">GO TO TRACKER</button>
+        </div>
+    </div>
+</body>
+</html>

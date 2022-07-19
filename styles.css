@@ -1,0 +1,46 @@
+@import "buttons.css";
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1B1F2D;
+    }
+    .text {
+        color: #fff;
+    }
+    .container {
+        background-color: #1D1F2D;
+        box-shadow: #000 2px 2px 25px 2px;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #fff;
+    }
+    .text {
+        color: #000;
+    }
+    .container {
+        background-color: rgb(240, 240, 240);
+        box-shadow: #000 2px 2px 25px 2px;
+    }
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.centerbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+    height: 450px;
+    text-align: center;
+}
