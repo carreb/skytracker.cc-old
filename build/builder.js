@@ -9,11 +9,15 @@ button.onclick = function() {
     const category = document.querySelector('#selector option:checked').parentElement.label
     const item = dropdownmenu.selectedOptions[0].value
     const key = keyInput.value
+    this.disabled = true;
+    this.innerHTML = 'PLEASE WAIT...';
     fetch(`https://api.ashcon.app/mojang/v2/user/${nameInput.value}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
                 alert(data.reason);
+                this.disabled = false;
+                this.innerHTML = 'GO TO TRACKER'
             } else {
                 const uuid = data.uuid
                 fetch('https://api.hypixel.net/skyblock/profiles?key=' + keyInput.value + '&uuid=' + uuid)
@@ -21,6 +25,8 @@ button.onclick = function() {
                     .then(data => {
                         if (data.success != true) {
                             alert(data.cause);
+                            this.disabled = false;
+                            this.innerHTML = 'GO TO TRACKER'
                         } else {
                             const profiles = data.profiles;
                             let profile_id
@@ -33,20 +39,22 @@ button.onclick = function() {
                                 }}
                             if (profile_id == undefined) {
                                 alert("Profile not found");
+                                this.disabled = false;
+                                this.innerHTML = 'GO TO TRACKER'
                             }
                             else {
                                 fetch('https://api.floaters.lol/hypixel/keys/', {
                                     method: 'POST',
                                     headers: {
-                                        'Content-Type': 'application/json',
-                                        'Authorization': 'testkey'
+                                        'Content-Type': 'application/json'
                                     },
                                     body: JSON.stringify({
                                         key: key,
                                     })
                                 }).then(response => response.json())
                                 .then(data => {
-                                    const url = `/trackers/${encodeURIComponent(category)}/${encodeURIComponent(item)}/?key=${encodeURIComponent(key)}&uuid=${encodeURIComponent(uuid)}&profile_id=${encodeURIComponent(profile_id)}`;
+                                    console.log(data)
+                                    const url = `/trackers/${encodeURIComponent(category)}/${encodeURIComponent(item)}/?key=${encodeURIComponent(key)}&uuid=${encodeURIComponent(uuid)}&profile_id=${encodeURIComponent(profile_id)}&name=${encodeURIComponent(nameInput.value)}`;
                                     return window.location.href = url;
                                 })
                             }
