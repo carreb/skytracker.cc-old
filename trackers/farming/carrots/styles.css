@@ -1,0 +1,54 @@
+@import "/buttons.css";
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1B1F2D;
+    }
+    .text {
+        color: #fff;
+    }
+    .container {
+        background-color: rgb(29, 31, 45, 0.75);
+        box-shadow: rgb(0, 0, 0, 0.75) 2px 2px 25px 2px;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #fff;
+    }
+    .text {
+        color: #000;
+    }
+    .container {
+        background-color: rgb(240, 240, 240, 0.80);
+        box-shadow: rgb(0, 0, 0, 0.75) 2px 2px 25px 2px;
+    }
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.centerbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#efficiencyGraph {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+    height: 600px;
+    text-align: center;
+}
