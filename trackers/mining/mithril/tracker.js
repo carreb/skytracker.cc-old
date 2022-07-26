@@ -11,6 +11,8 @@ const ItemsPerHour = document.getElementById('ItemsPerHour');
 const CoinsPerHourDisplay = document.getElementById('CoinsPerHour');
 const TotalCollectionDisplay = document.getElementById('TotalCollection');
 const playerNameSpan = document.getElementById('playernameSpan');
+const timeUntilUpdateDisplay = document.getElementById('TimeUntilUpdate');
+const timeSinceLastChangeDisplay = document.getElementById('TimeSinceChange');
 
 let collectionStart
 let startTime
@@ -52,11 +54,10 @@ function updateStats() {
     .then(response => response.json())
     .then(data => {
         console.log("updated")
-        lastUpdateCheck = new Date()
+        lastUpdateCheck = 30
         totalCollection = data.profile.members[UUIDNoDashes].collection.MITHRIL_ORE
         console.log(totalCollection)
         if (totalCollection === collectionStart || totalCollection != lastCheckTotal) {
-            lastChange = new Date()
             console.log("updated2")
             lastCheckTotal = totalCollection
             amountCollected = totalCollection - collectionStart
@@ -68,11 +69,67 @@ function updateStats() {
             TotalCollectionDisplay.innerHTML = commaify(totalCollection)
             if (coinsPerHour > 0) {
                 updateChartData(chart, new Date(), coinsPerHour)
+                lastChange = new Date()
             }
         }
     })
 }
 
+function updateTimeDisplays() {
+    lastUpdateCheck = lastUpdateCheck - 1
+    timeUntilUpdateDisplay.innerHTML = Math.round(lastUpdateCheck)  + " seconds"
+    if (getTimeAgo(lastChange) != "NaN year ago") {
+        timeSinceLastChangeDisplay.innerHTML = getTimeAgo(lastChange)
+    }
+
+}
+
+let timeDisplayInterval = setInterval(() => {
+    updateTimeDisplays()
+}, 1000)
+
 let statUpdateInterval = setInterval(() => {
     updateStats()
 }, 30000);
+
+
+
+
+
+// date stuff
+
+
+const MINUTE = 60;
+const HOUR = MINUTE * 60;
+const DAY = HOUR * 24;
+const WEEK = DAY * 7;
+const MONTH = DAY * 30;
+const YEAR = DAY * 365;
+
+function getTimeAgo(date) {
+  const secondsAgo = Math.round((Date.now() - Number(date)) / 1000);
+
+  if (secondsAgo < MINUTE) {
+    return secondsAgo + ` second${secondsAgo !== 1 ? "s" : ""} ago`;
+  }
+
+  let divisor;
+  let unit = "";
+
+  if (secondsAgo < HOUR) {
+    [divisor, unit] = [MINUTE, "minute"];
+  } else if (secondsAgo < DAY) {
+    [divisor, unit] = [HOUR, "hour"];
+  } else if (secondsAgo < WEEK) {
+    [divisor, unit] = [DAY, "day"];
+  } else if (secondsAgo < MONTH) {
+    [divisor, unit] = [WEEK, "week"];
+  } else if (secondsAgo < YEAR) {
+    [divisor, unit] = [MONTH, "month"];
+  } else {
+    [divisor, unit] = [YEAR, "year"];
+  }
+
+  const count = Math.floor(secondsAgo / divisor);
+  return `${count} ${unit}${count > 1 ? "s" : ""} ago`;
+}
