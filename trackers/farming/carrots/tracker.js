@@ -17,14 +17,6 @@ const timeSinceLastChangeDisplay = document.getElementById('TimeSinceChange');
 let collectionStart
 let startTime
 let sellPrice
-fetch('https://api.hypixel.net/skyblock/bazaar')
-.then(response => response.json())
-.then(data => {
-  console.log(data)
-  console.log(data.products.CARROT_ITEM.sell_summary[0].pricePerUnit)
-  sellPrice = data.products.CARROT_ITEM.sell_summary[0].pricePerUnit
-})
-
 let amountCollected
 let totalCollection
 let lastCheckTotal
@@ -34,9 +26,10 @@ let lastUpdateCheck
 let lastChange
 
 // initial fetch to get session beginning data
-fetch('https://api.hypixel.net/skyblock/profile?key=' + key + '&profile=' + profile_id)
-.then(response => response.json())
-.then(data => {
+function initialFetch() {
+  fetch('https://api.hypixel.net/skyblock/profile?key=' + key + '&profile=' + profile_id)
+  .then(response => response.json())
+  .then(data => {
     playerNameSpan.innerHTML = playerName
     console.log(data)
     collectionStart = data.profile.members[UUIDNoDashes].collection.CARROT_ITEM
@@ -44,6 +37,15 @@ fetch('https://api.hypixel.net/skyblock/profile?key=' + key + '&profile=' + prof
     startTime = new Date()
     updateStats()
 })
+  .catch(error => { 
+    console.log(error)
+        if (error == "TypeError: data.profile.members[UUIDNoDashes].collection is undefined") {
+        window.location.href = "/errors/collection-off.html"
+    }})
+}
+
+initialFetch()
+
 
 function updateChartData(chart, label, data) {
     chart.data.labels.push(label)
@@ -141,3 +143,18 @@ function getTimeAgo(date) {
   const count = Math.floor(secondsAgo / divisor);
   return `${count} ${unit}${count > 1 ? "s" : ""} ago`;
 }
+
+
+function getUpdatedSellPrice() {
+  fetch('https://api.hypixel.net/skyblock/bazaar')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    console.log(data.products.CARROT_ITEM.sell_summary[0].pricePerUnit)
+    sellPrice = data.products.CARROT_ITEM.sell_summary[0].pricePerUnit
+  })
+}
+
+bazaarSellPriceInterval = setInterval(() => {
+  getUpdatedSellPrice()
+}, 600000)

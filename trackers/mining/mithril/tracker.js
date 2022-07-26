@@ -26,16 +26,24 @@ let lastUpdateCheck
 let lastChange
 
 // initial fetch to get session beginning data
-fetch('https://api.hypixel.net/skyblock/profile?key=' + key + '&profile=' + profile_id)
-.then(response => response.json())
-.then(data => {
-    playerNameSpan.innerHTML = playerName
-    console.log(data)
-    collectionStart = data.profile.members[UUIDNoDashes].collection.MITHRIL_ORE
-    console.log(collectionStart)
-    startTime = new Date()
-    updateStats()
-})
+function initialFetch() {
+    fetch('https://api.hypixel.net/skyblock/profile?key=' + key + '&profile=' + profile_id)
+    .then(response => response.json())
+    .then(data => {
+        playerNameSpan.innerHTML = playerName
+        console.log(data)
+        collectionStart = data.profile.members[UUIDNoDashes].collection.MITHRIL_ORE
+        console.log(collectionStart)
+        startTime = new Date()
+        updateStats()
+    })
+    .catch(error => { 
+        if (error == "TypeError: data.profile.members[UUIDNoDashes].collection is undefined") {
+        window.location.href = "/errors/collection-off.html"
+    }})
+}
+
+initialFetch()
 
 function updateChartData(chart, label, data) {
     chart.data.labels.push(label)

@@ -1,0 +1,27 @@
+@import "/buttons.css";
+
+body {
+    background-color: #1B1F2D;
+    overflow-x: hidden;
+    margin: 0;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+a {
+    font-family: 'Poppins', sans-serif;
+    color: lightblue;
+}
+
+a:visited {
+    color: lightblue;
+}
