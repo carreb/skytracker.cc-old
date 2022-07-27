@@ -10,7 +10,7 @@ button.onclick = function() {
     const item = dropdownmenu.selectedOptions[0].value
     const key = keyInput.value
     this.disabled = true;
-    this.innerHTML = 'PLEASE WAIT...';
+    this.innerHTML = 'FETCHING UUID...';
     fetch(`https://api.ashcon.app/mojang/v2/user/${nameInput.value}`)
         .then(response => response.json())
         .then(data => {
@@ -28,6 +28,7 @@ button.onclick = function() {
                             this.disabled = false;
                             this.innerHTML = 'GO TO TRACKER'
                         } else {
+                            this.innerHTML = 'FETCHING PROFILE...'
                             const profiles = data.profiles;
                             let profile_id
                             // For each profile, check if cute_name matches the value of profileInput
@@ -54,6 +55,7 @@ button.onclick = function() {
                                 }).then(response => response.json())
                                 .then(data => {
                                     console.log(data)
+                                    this.innerHTML = 'WRAPPING UP...'
                                     const url = `/trackers/${encodeURIComponent(category)}/${encodeURIComponent(item)}/?key=${encodeURIComponent(key)}&uuid=${encodeURIComponent(uuid)}&profile_id=${encodeURIComponent(profile_id)}&name=${encodeURIComponent(nameInput.value)}`;
                                     return window.location.href = url;
                                 })
