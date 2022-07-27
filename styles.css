@@ -41,7 +41,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     width: 400px;
-    height: 450px;
+    height: 500px;
     text-align: center;
 }
 
@@ -50,4 +50,13 @@ body {
     padding: 5px;
     border-radius: 0.2rem;
     font-size: 25px;
+}
+
+a {
+    font-family: 'Poppins', sans-serif;
+    color: lightblue;
+}
+
+a:visited {
+    color: lightblue;
 }
