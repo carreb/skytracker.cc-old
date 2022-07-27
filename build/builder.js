@@ -56,7 +56,7 @@ button.onclick = function() {
                                 .then(data => {
                                     console.log(data)
                                     this.innerHTML = 'WRAPPING UP...'
-                                    const url = `/trackers/${encodeURIComponent(category)}/${encodeURIComponent(item)}/?key=${encodeURIComponent(key)}&uuid=${encodeURIComponent(uuid)}&profile_id=${encodeURIComponent(profile_id)}&name=${encodeURIComponent(nameInput.value)}`;
+                                    const url = `/trackers/${encodeURIComponent(category.toLowerCase())}/${encodeURIComponent(item.toLowerCase())}/?key=${encodeURIComponent(key)}&uuid=${encodeURIComponent(uuid)}&profile_id=${encodeURIComponent(profile_id)}&name=${encodeURIComponent(nameInput.value)}`;
                                     return window.location.href = url;
                                 })
                             }
