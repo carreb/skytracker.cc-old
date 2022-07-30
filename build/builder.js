@@ -7,7 +7,7 @@ const dropdownmenu = document.getElementById('selector');
 
 button.onclick = function() {
     const category = document.querySelector('#selector option:checked').parentElement.label
-    const item = dropdownmenu.selectedOptions[0].value
+    const item = dropdownmenu.selectedOptions[0].innerHTML
     const key = keyInput.value
     this.disabled = true;
     this.innerHTML = 'FETCHING UUID...';
