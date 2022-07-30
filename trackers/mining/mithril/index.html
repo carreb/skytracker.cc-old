@@ -12,8 +12,8 @@
     <link rel="shortcut icon" href="Enchanted_Prismarine_Crystals.webp" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="tracker.js" defer></script>
-    <script src="graph.js" defer></script>
+    <script src="/utils/tracker.js" defer></script>
+    <script src="/utils/graph.js" defer></script>
     <title>SkyTracker</title>
 </head>
 <body>
@@ -24,7 +24,7 @@
             <h1 class="text">Tracking <span id="playernameSpan">[NAME]</span>'s Mithril</h1>
             <h3 class="text">Session Mithril Mined: <span id="SessionTotal">SessionTotal</span></h3>
             <h3 class="text">Mithril Per Hour: <span id="ItemsPerHour">ItemsPerHour</span></h3>
-            <h3 class="text">Coins Per Hour (NPC): <span id="CoinsPerHour">CoinsPerHour</span></h3>
+            <h3 class="text">Coins Per Hour (<span id="sellTypeSpan">SellTypeSpan</span>): <span id="CoinsPerHour">CoinsPerHour</span></h3>
             <h3 class="text">Total Collection: <span id="TotalCollection">TotalCollection</span></h3>
             <p class="text">Time until next update check: <span id="TimeUntilUpdate">TimeUntilUpdate</span></p>
             <p class="text">Time since last change: <span id="TimeSinceChange">Never</span></p>
