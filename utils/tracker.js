@@ -226,6 +226,7 @@ function getUpdatedSellPrice() {
   .then(response => response.json())
   .then(data => {
     NPCPrice = data[trackedItemInternalID]
+    console.log('NPC PRICE: ' + NPCPrice)
     fetch('https://api.hypixel.net/skyblock/bazaar')
     .then(response => response.json())
     .then(data => {
@@ -238,6 +239,9 @@ function getUpdatedSellPrice() {
             sellPrice = NPCPrice
             sellTypeSpan.innerHTML = "NPC"
         }
+    }).catch(error => {
+        sellPrice = NPCPrice
+        sellTypeSpan.innerHTML = "NPC"
     })
   })
 }
