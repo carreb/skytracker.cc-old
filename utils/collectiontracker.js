@@ -13,7 +13,9 @@ const playerNameSpan = document.getElementById('playernameSpan');
 const timeUntilUpdateDisplay = document.getElementById('TimeUntilUpdate');
 const timeSinceLastChangeDisplay = document.getElementById('TimeSinceChange');
 const sellTypeSpan = document.getElementById('sellTypeSpan')
-const trackedItem = window.location.href.split("/")[5]
+let trackedItem = window.location.href.split("/")[5]
+// replace %20 with spaces
+trackedItem = trackedItem.replace(/%20/g, " ")
 const ITEMS = {
     // Farming Collections
     "cactus": "CACTUS",

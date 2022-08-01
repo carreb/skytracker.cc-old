@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- end poppins font -->
+    <link rel="shortcut icon" href="Enchanted_Rabbit.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/utils/trackerstyles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/utils/collectiontracker.js" defer></script>
+    <script src="/utils/graph.js" defer></script>
+    <title>SkyTracker</title>
+</head>
+<body>
+    <canvas id="efficiencyGraph"></canvas>
+    <div class="centerbox">
+        <div class="container">
+            <img src="Enchanted_Rabbit.webp" width="150" height="150">
+            <h1 class="text">Tracking <span id="playernameSpan">[NAME]</span>'s Rabbit</h1>
+            <h3 class="text">Session Rabbit Harvested: <span id="SessionTotal">SessionTotal</span></h3>
+            <h3 class="text">Rabbit Per Hour: <span id="ItemsPerHour">ItemsPerHour</span></h3>
+            <h3 class="text">Coins Per Hour (<span id="sellTypeSpan">TYPE</span>): <span id="CoinsPerHour">CoinsPerHour</span></h3>
+            <h3 class="text">Total Collection: <span id="TotalCollection">TotalCollection</span></h3>
+            <p class="text">Time until next update check: <span id="TimeUntilUpdate">TimeUntilUpdate</span></p>
+            <p class="text">Time since last change: <span id="TimeSinceChange">Never</span></p>
+        </div>
+    </div>
+</body>
+</html>
