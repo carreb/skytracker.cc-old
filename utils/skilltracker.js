@@ -97,7 +97,7 @@ function updateStats() {
             // CoinsPerHourDisplay.innerHTML = commaify(coinsPerHour)
             TotalCollectionDisplay.innerHTML = commaify(totalCollection)
             if (coinsPerHour > 0) {
-                updateChartData(chart, new Date(), coinsPerHour)
+                updateChartData(chart, new Date(), collectionPerHour)
                 lastChange = new Date()
             }
         }
