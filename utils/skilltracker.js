@@ -96,7 +96,7 @@ function updateStats() {
             ItemsPerHour.innerHTML = commaify(collectionPerHour)
             // CoinsPerHourDisplay.innerHTML = commaify(coinsPerHour)
             TotalCollectionDisplay.innerHTML = commaify(totalCollection)
-            if (coinsPerHour > 0) {
+            if (collectionPerHour > 0) {
                 updateChartData(chart, new Date(), collectionPerHour)
                 lastChange = new Date()
             }
@@ -162,34 +162,3 @@ function getTimeAgo(date) {
   const count = Math.floor(secondsAgo / divisor);
   return `${count} ${unit}${count > 1 ? "s" : ""} ago`;
 }
-
-// function getUpdatedSellPrice() {
-//   fetch('https://api.skytracker.cc/npc')
-//   .then(response => response.json())
-//   .then(data => {
-//     NPCPrice = data[trackedItemInternalID]
-//     console.log('NPC PRICE: ' + NPCPrice)
-//     fetch('https://api.hypixel.net/skyblock/bazaar')
-//     .then(response => response.json())
-//     .then(data => {
-//         console.log(data)
-//         BZPrice = data.products[trackedItemInternalID].sell_summary[0].pricePerUnit
-//         if (BZPrice > NPCPrice) {
-//             sellPrice = BZPrice
-//             sellTypeSpan.innerHTML = "BZ"
-//         } else {
-//             sellPrice = NPCPrice
-//             sellTypeSpan.innerHTML = "NPC"
-//         }
-//     }).catch(error => {
-//         sellPrice = NPCPrice
-//         sellTypeSpan.innerHTML = "NPC"
-//     })
-//   })
-// }
-
-// getUpdatedSellPrice()
-
-// bazaarSellPriceInterval = setInterval(() => {
-//   getUpdatedSellPrice()
-// }, 600000)
