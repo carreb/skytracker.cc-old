@@ -61,6 +61,7 @@ const ITEMS = {
     "blaze rod": "BLAZE_ROD",
     "bone": "BONE",
     "ender pearls": "ENDER_PEARL",
+    "chili pepper": "CHILI_PEPPER",
     "ghast tear": "GHAST_TEAR",
     "gunpowder": "SULPHUR",
     "magma cream": "MAGMA_CREAM",
